@@ -1,0 +1,3 @@
+1. You require GNU make and GCC compiler to run the code
+2. Run make, it will generate the require object files and binary in the objects folder
+3. Binary is located in objects folder and named bf
