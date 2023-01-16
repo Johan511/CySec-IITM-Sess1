@@ -4,7 +4,7 @@ DEBUG=1
 
 INCDIR=includes
 OBJDIR=objects
-BINARY=rec
+BINARY=bf
 SRC=src
 TESTDIR=test
 OBJECTS=$(OBJDIR)/stack.o $(OBJDIR)/writeFile.o
