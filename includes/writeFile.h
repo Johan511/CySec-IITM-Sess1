@@ -1,5 +1,8 @@
 #include "./stack.h"
 #include <stdio.h>
 
-int writeFile();
-int writeToFile(char * str);
+#define STR_MAX_SIZE 4
+
+
+int writeFile(FILE * fp);
+int writeToFile(char * str, FILE * fp);

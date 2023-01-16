@@ -7,8 +7,8 @@ OBJDIR=objects
 BINARY=bf
 SRC=src
 TESTDIR=test
-OBJECTS=$(OBJDIR)/stack.o $(OBJDIR)/writeFile.o
-INLCUDES=$(INCDIR)/stack.h $(INCDIR)/writeFile.h
+OBJECTS=$(OBJDIR)/stack.o $(OBJDIR)/writeFile.o $(OBJDIR)/sha256.o $(OBJDIR)/writeFile.o $(OBJDIR)/main.o 
+INLCUDES=$(INCDIR)/stack.h $(INCDIR)/writeFile.h $(INCDIR)/sha256.h
 TEST_FILES=$(TESTDIR)/genTest.py
 TEST_INPUT_FILE=$(TESTDIR)/input.txt
 PYTHON_INTR=python3
@@ -21,7 +21,7 @@ all : $(BINARY)
 $(BINARY) : $(OBJECTS) $(INLCUDES)
 	$(CC) -o $(OBJDIR)/$@ $^
 
-$(OBJDIR)/%.o : $(SRC)/%.c $(INCDIR)/%.h
+$(OBJDIR)/%.o : $(SRC)/%.c $(INLCUDES)
 	$(CC) -c -g -o $@ $<
 
 test: $(BINARY) $(TEST_FILES) $(TEST_INPUT_FILE)

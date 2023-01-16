@@ -1,12 +1,13 @@
 #include "../includes/writeFile.h"
 
-int writeToFile(char *top)
+
+int writeToFile(char *top, FILE *fp)
 {
-    printf("%s\n", top);
+    fprintf(fp, "%s\n", top);
     return 1;
 }
 
-int writeFile()
+int writeFile(FILE *fp)
 {
     stack *st = NULL;
     char *s = NULL;
@@ -22,7 +23,7 @@ int writeFile()
         int s_len = strlen(top);
         if (s_len >= STR_MAX_SIZE)
         {
-            writeToFile(top);
+            writeToFile(top, fp);
         }
         else
         {
@@ -42,9 +43,4 @@ int writeFile()
 error:
     SAFE_FREE(s);
     SAFE_FREE(top);
-}
-
-int main()
-{
-    writeFile();
 }

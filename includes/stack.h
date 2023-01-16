@@ -12,7 +12,6 @@
     } while (0)
 #define ST_MAX_SIZE 1000
 #define ST_EXTEND_MULTIPLIER 2
-#define STR_MAX_SIZE 4
 
 typedef struct __stack
 {

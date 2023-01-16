@@ -2,3 +2,4 @@
 bin/*
 objects/*
 rec
+*.txt
