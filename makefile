@@ -2,7 +2,7 @@ CC=gcc
 OPT=-O3
 DEBUG=1
 DCCFLAGS=-fsanitize=address
-CCFLAGS=
+CCFLAGS=-O3
 
 INCDIR=includes
 OBJDIR=objects
@@ -24,7 +24,7 @@ $(BINARY) : $(OBJECTS) $(INLCUDES)
 	$(CC) $(CCFLAGS) -o $(OBJDIR)/$@ $^
 
 $(OBJDIR)/%.o : $(SRC)/%.c $(INLCUDES)
-	$(CC) -c -g -o $@ $<
+	$(CC) $(CCFLAGS) -c -o $@ $<
 
 test: $(BINARY) $(TEST_FILES) $(TEST_INPUT_FILE)
 	make all 

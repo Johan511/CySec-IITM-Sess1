@@ -4,8 +4,9 @@
 
 #include <stdlib.h>
 #define CACHE_SIZE 1000
-const char *FILENAME = "possible.txt";
 
+const char *FILENAME = "possible.txt";
+const char *FILE_OPEN_MODE = "w+";
 
 int readFile(BYTE *orginal_hash)
 {
@@ -50,9 +51,9 @@ int readFile(BYTE *orginal_hash)
 
 int main()
 {
-    FILE *fp = fopen(FILENAME, "w+");
-    BYTE* text1 = PASSWORD;
-    
+    FILE *fp = fopen(FILENAME, FILE_OPEN_MODE);
+    BYTE *text1 = PASSWORD;
+
     if (fp == NULL)
         return 1;
     writeFile(fp);

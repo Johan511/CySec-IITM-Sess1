@@ -21,7 +21,7 @@ int writeFile(FILE *fp)
     {
         top = pop(st);
         int s_len = strlen(top);
-        if (s_len >= STR_MAX_SIZE)
+        if (s_len == STR_MAX_SIZE)
         {
             writeToFile(top, fp);
         }
