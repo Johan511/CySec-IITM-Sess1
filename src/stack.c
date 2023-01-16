@@ -28,7 +28,8 @@ int extend_stack(stack *st)
     int begin = st->begin;
     int end = st->end;
     for (int i = st->begin; i < st->max_len; i++)
-        new_arr[i-begin] = old_arr[i];
+        new_arr[i - begin] = old_arr[i];
+    SAFE_FREE(old_arr);
     st->arr = new_arr;
     st->end = (end - begin);
     st->begin = 0;

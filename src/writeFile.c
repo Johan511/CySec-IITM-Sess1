@@ -40,7 +40,12 @@ int writeFile(FILE *fp)
         }
         SAFE_FREE(top);
     }
+    SAFE_FREE(st->arr);
+    SAFE_FREE(st);
+    return 0;
 error:
-    SAFE_FREE(s);
     SAFE_FREE(top);
+    SAFE_FREE(st->arr);
+    SAFE_FREE(st);
+    return 0;
 }

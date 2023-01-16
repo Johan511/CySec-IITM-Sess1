@@ -1,6 +1,8 @@
 CC=gcc
 OPT=-O3
 DEBUG=1
+DCCFLAGS=-fsanitize=address
+CCFLAGS=
 
 INCDIR=includes
 OBJDIR=objects
@@ -19,7 +21,7 @@ all : $(BINARY)
 # $^ => everything on right
 # $< => first object
 $(BINARY) : $(OBJECTS) $(INLCUDES)
-	$(CC) -o $(OBJDIR)/$@ $^
+	$(CC) $(CCFLAGS) -o $(OBJDIR)/$@ $^
 
 $(OBJDIR)/%.o : $(SRC)/%.c $(INLCUDES)
 	$(CC) -c -g -o $@ $<
