@@ -1,38 +1,30 @@
-/*********************************************************************
-* Filename:   sha256.h
-* Author:     Brad Conte (brad AT bradconte.com)
-* Copyright:
-* Disclaimer: This code is presented "as is" without any guarantees.
-* Details:    Defines the API for the corresponding SHA1 implementation.
-*********************************************************************/
+#include <inttypes.h>
+#include <stdint.h>
 
-#ifndef SHA256_H
-#define SHA256_H
+#pragma once
+#define SHA256_HASH_SIZE 32
 
-/*************************** HEADER FILES ***************************/
-#include <stddef.h>
-#include <stdlib.h>
-#include <memory.h>
-#include <string.h>
+/* Hash size in 32-bit words */
+#define SHA256_HASH_WORDS 8
 
-/****************************** MACROS ******************************/
-#define SHA256_BLOCK_SIZE 32            // SHA256 outputs a 32 byte digest
 
-/**************************** DATA TYPES ****************************/
 typedef unsigned char BYTE;             // 8-bit byte
 typedef unsigned int  WORD;             // 32-bit word, change to "long" for 16-bit machines
+struct _SHA256Context {
+  uint64_t totalLength;
+  uint32_t hash[SHA256_HASH_WORDS];
+  uint32_t bufferLength;
+  union {
+    uint32_t words[16];
+    uint8_t bytes[64];
+  } buffer;
+};
 
-typedef struct {
-	BYTE data[64];
-	WORD datalen;
-	unsigned long long bitlen;
-	WORD state[8];
-} SHA256_CTX;
+typedef struct _SHA256Context SHA256_CTX;
 
-/*********************** FUNCTION DECLARATIONS **********************/
-void sha256_init(SHA256_CTX *ctx);
-void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len);
-void sha256_final(SHA256_CTX *ctx, BYTE hash[]);
-char *getSHA256Hash(char *str);
 
-#endif   // SHA256_H
+extern void sha256_init (SHA256_CTX *sc);
+extern void sha256_update (SHA256_CTX *sc, const void *data, uint32_t len);
+extern void sha256_final (SHA256_CTX *sc, uint8_t hash[SHA256_HASH_SIZE]);
+
+
